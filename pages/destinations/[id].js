@@ -614,9 +614,13 @@ const Destination = () => {
       {road.data.attributes.covid[Object.keys(road.data.attributes.covid)[0]].subtext}
     </div>
     <div>
-      {/* Known For - attributes.name, attributes.icon */}
-      {road.included.filter((elem) => (elem.type = "known_for")).map((elem) => {
-        return (<div>{elem.id}</div>)
+      {/* Known For - attributes.name, attributes.icon -- Icons do not seem to work, Known_for returns user data for some reason so I added the icon check */}
+      {road.included.filter((elem) => (elem.type = "known_for") && (elem.attributes.icon)).map((elem) => {
+        return (
+          <div>
+            {/* <Image src={elem.attributes.icon ? elem.attributes.icon : "/images/profile.jpg"} width="50" height="50"></Image> */}
+            { elem.attributes.name }
+          </div>)
       })}
     </div>
     <div>
@@ -641,6 +645,10 @@ const Destination = () => {
     </div>
     <div>
       {/* Rest of the useful links */}
+      {road.data.attributes.getyourguide_url}
+      {road.data.attributes.kayak_car_rental_url}
+      {road.data.attributes.kayak_lodgings_url}
+      {road.data.attributes.airbnb_url}
     </div>
     <div>
       {/* Explore these related destinations */}
