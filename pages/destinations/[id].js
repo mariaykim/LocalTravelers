@@ -642,6 +642,7 @@ const Destination = () => {
     </div>
     <div>
       {/* Foursquare API */}
+
     </div>
     <div>
       {/* Rest of the useful links */}
