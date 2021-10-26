@@ -2,6 +2,8 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from './layout.module.css'
 import utilStyles from '../styles/utils.module.css'
+import NavBar from './navbar.js'
+import Footer from './footer.js'
 import Link from 'next/link'
 
 const name = 'Maria Kim'
@@ -18,6 +20,7 @@ export default function Layout({ children, home }) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
+      <NavBar />
       <header className={styles.header}>
         {home ? (
           <>
@@ -61,6 +64,7 @@ export default function Layout({ children, home }) {
           </Link>
         </div>
       )}
+      <Footer />
     </div>
   )
 }
