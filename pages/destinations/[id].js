@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from 'next/router'
+import Image from 'next/image'
 import Layout, { siteTitle } from '../../components/layout'
 import utilStyles from '../../styles/utils.module.css'
 
@@ -594,26 +595,56 @@ const Destination = () => {
   const { id } = router.query
   console.log(id)
 
-  const [ destination, setDestination ] = useState([]);
-
-  const handleFetchDestination = async () => {
-    const destinationResponse = await fetch("/api/destinations/1");
-    const destinationData = await destinationResponse.json();
-    setDestination(destinationData);
-    console.log('dest', destination)
-  };
-
-  useEffect(()=> {
-    handleFetchDestination()
-  }, [])
-
   return (
     <Layout>
-      <p>Destination: {id}</p>
-      <button onClick={handleFetchDestination}>Fetch the destination</button>
-      <div>
-        {destination.message}
-      </div>
+    <div>
+      {road.data.attributes.name}
+      {road.data.attributes.destination_type}
+      {road.data.attributes.check_in_count}
+    </div>
+    <div>
+      {road.data.attributes.average_rating}
+      {/* walk score api */}
+      {road.data.attributes.budget[Object.keys(road.data.attributes.budget)[0]].text}
+
+      {road.data.attributes.safety[Object.keys(road.data.attributes.safety)[0]].text}
+      {road.data.attributes.safety[Object.keys(road.data.attributes.safety)[0]].subtext}
+
+      {road.data.attributes.covid[Object.keys(road.data.attributes.covid)[0]].text}
+      {road.data.attributes.covid[Object.keys(road.data.attributes.covid)[0]].subtext}
+    </div>
+    <div>
+      {/* Known For - attributes.name, attributes.icon */}
+      {road.included.filter((elem) => (elem.type = "known_for")).map((elem) => {
+        return (<div>{elem.id}</div>)
+      })}
+    </div>
+    <div>
+      {/* Photos - Image needs width/height or layout properties*/}
+      {road.included.filter((elem) => (elem.type = "photos")).map((elem) => {
+        return ( elem.attributes?.image ? (<Image src={elem.attributes.image.thumb} width="60" height="60"></Image>) : (null))
+      })}
+    </div>
+    <div>
+      {/* Mentions  */}
+      {road.included.filter((elem) => (elem.type = "mention")).map((elem) => {
+        return (
+          <div>
+            {elem.attributes.title}{' '}{elem.attributes.excerpt}{' '}{elem.attributes.url}{' '}
+            {elem.attributes.source_name}{' '}{elem.attributes.source_domain}{' '}{elem.attributes.source_logo}
+          </div>
+        )
+      })}
+    </div>
+    <div>
+      {/* Foursquare API */}
+    </div>
+    <div>
+      {/* Rest of the useful links */}
+    </div>
+    <div>
+      {/* Explore these related destinations */}
+    </div>
     </Layout>
   )
 }
