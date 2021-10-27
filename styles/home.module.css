@@ -1,0 +1,6 @@
+.background {
+  position: relative;
+  height: 100%;
+  z-index: -1;
+  background: transparent right top no-repeat;
+}

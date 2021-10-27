@@ -1,7 +1,13 @@
-export default function Footer() {
+import React from "react";
+import utilStyles from '../styles/utils.module.css';
+import footerStyles from '../styles/footer.module.css';
+
+const Footer = () => {
   return (
     <>
-      <div>Footer</div>
+      <div className={footerStyles.footer}>Footer</div>
     </>
   )
 }
+
+export default Footer;
