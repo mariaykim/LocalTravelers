@@ -3,7 +3,7 @@
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333;
+  background-color: rgba(32, 83, 53, 0.71);
 }
 
 .right {
@@ -24,7 +24,7 @@
 
 /* Change the link color to #111 (black) on hover */
 .li a:hover {
-  background-color: #188;
+  background-color: rgba(22, 64, 39, 0.7);
 }
 
 .active {
