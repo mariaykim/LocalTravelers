@@ -11,7 +11,7 @@ export const siteTitle = 'LocalTravelers website'
 
 export default function Layout({ children, home }) {
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <meta
           name="description"
@@ -21,7 +21,7 @@ export default function Layout({ children, home }) {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <NavBar className={styles.header} />
-      <main>{children}</main>
+      <main className={styles.container}>{children}</main>
       {!home && (
         <div className={styles.backToHome}>
           <Link href="/">
