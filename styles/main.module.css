@@ -1,11 +1,20 @@
-.image-container {
-  width: 50%;
+/* Container holding the image and the text */
+.container {
+  position: relative;
+  text-align: center;
+  color: purple;
+}
+/* Centered text */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
 
-  .image {
-    object-fit: contain;
-    width: 50% !important;
-    position: relative !important;
-    height: unset !important;
-    z-index: 0;
-  }
+.image {
+  z-index: 0;
+  height: 800px;
+  width: 100%
 }
